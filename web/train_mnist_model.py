@@ -10,7 +10,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-def create_advanced_model(epochs=1):
+def create_model(epochs=1):
 
     batch_size = 128
     num_classes = 10
@@ -72,9 +72,9 @@ def create_advanced_model(epochs=1):
     return score
 
 
-@app.route('/<int:epochs>')
+@app.route('/train/<int:epochs>')
 def highload_probe(epochs):
-    score = create_advanced_model(epochs)
+    score = create_model(epochs)
     return 'Accuracy of model: %.2f' % score[1]
 
 @app.route("/livetest")
