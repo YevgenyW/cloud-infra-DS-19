@@ -3,7 +3,7 @@ Cloud infrastructure home project
 
 Task 1
 
-To build docker image ('train-model' - image name, 'v1' - tag, 'zpozdniakov' - docker login name):
+To build docker image ('train-model' - image name, 'v1' - tag, 'zpozdniakov' - docker login name):\
 docker build -t zpozdniakov/train-model:v1 .
 
 To run docker container (with open 5000 port):
