@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: train-model-replicaset
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: train-model-replicaset
+  template:
+    metadata:
+      labels: 
+        app: train-model-replicaset
+    spec:
+      containers:
+      - name: train-model-replicaset
+        image: zpozdniakov/train-model:v1
+        ports:
+        - containerPort: 5000
