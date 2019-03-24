@@ -42,12 +42,12 @@ To start app using yaml file from Task 2:\
 ./Task3_deploy_train_model_yaml.sh
 
 To start app without yaml file:\
-Task3_deploy_train_model.sh zpozdniakov/model-train:v1
+./Task3_deploy_train_model.sh zpozdniakov/model-train:v1
 
 Task 4:
 - add 'livenessProbe' and 'readinessProbe' to file  'replicaset.yaml'
 
-Task 5:
+Task 5:\
 Run:\
-Task5_local_deploy.sh zpozdniakov/train-model:local\
+./Task5_local_deploy.sh zpozdniakov/train-model:local\
 where 'zpozdniakov/train-model:local' - name of docker image that will be created using use Minikube Docker daemon
