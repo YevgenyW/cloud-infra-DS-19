@@ -79,8 +79,11 @@ def highload_probe(epochs):
 
 @app.route("/livetest")
 def livetest(): 
-    return "TEST OK"
+    return "livetest OK"
 
+@app.route("/readiness")
+def readiness(): 
+    return "readiness OK"
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

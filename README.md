@@ -1,5 +1,5 @@
 # cloud-infra-DS-19
-for cloud infrastructure project
+Cloud infrastructure home project
 
 Task 1
 
@@ -23,6 +23,9 @@ http://localhost:5000/train/<int: epochs> in browser window
 where 'epochs' - number of epochs to train. On my laptop(without GPU) one epoch is running more than 1 minute.
 Service will return accuracy of the trained model. 
 
+Task 2
+ - replicaset.yaml
+ - service.yaml
 
 Task 3
 
@@ -35,17 +38,16 @@ minikube start --vm-driver hyperkit
 To check status:
 minikube status
 
-To start app:
-kubectl run model-train-app --image=zpozdniakov/model-train:v1 --port=5000
-message "deployment.apps "model-train-app" created" expected
+To start app using yaml file from Task 2:
+./Task3_deploy_train_model_yaml.sh
 
-kubectl expose deployment model-train-app --type=NodePort
-message "service "model-train-app" exposed" expected
+To start app without yaml file:
+Task3_deploy_train_model.sh zpozdniakov/model-train:v1
 
-To get services list:
-kubectl get services
-or
-minikube service list
+Task 4:
+- add 'livenessProbe' and 'readinessProbe' to file  'replicaset.yaml'
 
-Now you can run:
-minikube dashboard
+Task 5
+Run:
+Task5_local_deploy.sh zpozdniakov/train-model:local
+where 'zpozdniakov/train-model:local' - name of docker image that will be created using use Minikube Docker daemon
