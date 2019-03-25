@@ -62,7 +62,9 @@ kubectl apply -f metrics-server/deploy/1.8+\
 To enable metrics-server in minikube:\
 minikube addons enable metrics-server\
 
-
+To start autoscalers:\
+./Task6_auto_scaling.sh\ 
+or\
 CPU autoscaler:\
 kubectl create -f cpu_hpa.yaml\
 Memory autoscaler:\
