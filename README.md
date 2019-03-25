@@ -24,6 +24,7 @@ where 'epochs' - number of epochs to train. On my laptop(without GPU) one epoch 
 Service will return accuracy of the trained model. 
 
 Task 2
+
  - replicaset.yaml
  - service.yaml
 
@@ -44,10 +45,32 @@ To start app using yaml file from Task 2:\
 To start app without yaml file:\
 ./Task3_deploy_train_model.sh zpozdniakov/model-train:v1
 
-Task 4:
+Task 4
+
 - add 'livenessProbe' and 'readinessProbe' to file  'replicaset.yaml'
 
-Task 5:\
+Task 5\
+
 Run:\
 ./Task5_local_deploy.sh zpozdniakov/train-model:local\
 where 'zpozdniakov/train-model:local' - name of docker image that will be created using use Minikube Docker daemon
+
+Task 6\
+
+To start metric-server:\
+kubectl apply -f metrics-server/deploy/1.8+\
+To enable metrics-server in minikube:\
+minikube addons enable metrics-server\
+
+
+CPU autoscaler:\
+kubectl create -f cpu_hpa.yaml\
+Memory autoscaler:\
+kubectl create -f memory_hpa.yaml\
+
+To imitate CPU consumption:\
+http://localhost:5000/train/<int: epochs> in browser window\
+To imitate memory consumption:\
+http://localhost:5000/eat_memory/<int: num_Mb> in browser window\
+where num_Mb - number of allocated Mbs.
+

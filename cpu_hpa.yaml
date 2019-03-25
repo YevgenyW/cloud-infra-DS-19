@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: train-model-cpu-scaler
+spec:
+  maxReplicas: 4
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: train-model-deployment
+  targetCPUUtilizationPercentage: 80
+status:
+  currentReplicas: 2
+  desiredReplicas: 2

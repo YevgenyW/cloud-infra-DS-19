@@ -10,6 +10,8 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+memory = bytearray(1)
+
 def create_model(epochs=1):
 
     batch_size = 128
@@ -84,6 +86,11 @@ def livetest():
 @app.route("/readiness")
 def readiness(): 
     return "readiness OK"
+
+@app.route("/eat_memory/<int:num_Mb>")
+def eat_memory(num_Mb): 
+    memory = bytearray(num_Mb*1000000)
+    return "Memory consumption: %d Mb" % num_Mb
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

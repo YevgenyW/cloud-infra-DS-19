@@ -1,24 +1,30 @@
 apiVersion: extensions/v1beta1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: train-model-replicaset
+  name: train-model-deployment
 
 spec:
   replicas: 1
+  # maxReplicas: 4
+  # minReplicas: 2
   selector:
     matchLabels:
-        app: train-model-replicaset
+        app: train-model-deployment
   template:
     metadata:
       labels: 
-        app: train-model-replicaset
+        app: train-model-deployment
     spec:
       containers:
-      - name: train-model-replicaset
+      - name: train-model-deployment
         image: zpozdniakov/train-model:local
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
+
+        resources:
+          requests:
+            memory: 5Mi
 
         livenessProbe:
           httpGet:

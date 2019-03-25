@@ -10,4 +10,4 @@ spec:
     port: 9090
     targetPort: 5000
   selector:
-    app: train-model-replicaset
+    app: train-model-deployment
